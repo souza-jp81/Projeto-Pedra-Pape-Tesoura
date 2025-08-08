@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Mochiy Pop One", sans-serif;
+}
+
+body {
+
+    background-image:  url("./assets/maxresdefault.jpg");
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    justify-content: center;
+}
+
+.container {
+
+    padding: 40px;
+    background-color: #ffb8b8;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttons {
+
+    margin: 30px 0;
+    display: flex;
+    gap: 50px;
+    
+}
+
+button {
+
+    padding: 10px;
+    font-size: 45px;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    transition: opacity 0.4s ease-in-out;
+}
+
+button:hover {
+
+    opacity: 0.6;
+}
+
+#rock {
+
+    background-color: #523336;
+}
+
+#paper {
+
+    background-color: #97c5ec;
+}
+
+#scissor {
+
+    background-color: #b92dfa;
+}
+
+p {
+
+    font-weight: bold;
+    font-size: larger;
+    margin-bottom: 15px;
+}
+
+.your-score span {
+
+    color: #00006e;
+}
+
+.machine-score span {
+
+    color: rgb(255, 0, 0);
+}
+
+.result {
+    background-color: hsl(0, 100%, 50%);
+    font-size: 1.8rem;
+    font-style: italic;
+    border-radius: 5px;
+}
