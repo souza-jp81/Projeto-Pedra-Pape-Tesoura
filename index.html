@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <title>Pedra | Papel | Tesoura - J.P.DEV.</title>
+    <title>Pedra | Papel | Tesoura</title>
 </head>
 
 <body>
@@ -16,21 +16,22 @@
         <h1>Pedra | Papel | Tesoura</h1>
 
         <div class="buttons">
+            <button id="rock" onclick="playHuman('rock')">&#x270A;</button>
+            <button id="paper" onclick="playHuman('paper')">&#x1F590;</button>
+            <button id="scissor" onclick="playHuman('scissor')">&#x270C;</button>
+        </div>
 
-        <button id="rock" onclick="playHuman('rock')">&#x270A;</button>
-        <button id="paper" onclick="playHuman('paper')">&#x1F590;</button>
-        <button id="scissor" onclick="playHuman('scissor')">&#x270C;</button>
-
+        <div class="animations">
+            <div id="human-animation" class="animation"></div>
+            <div id="machine-animation" class="animation"></div>
         </div>
 
         <p class="result"></p>
 
         <p class="your-score">Sua Pontuação: <span id="human-score">0</span></p>
-        <p class="machine-score">Pontuação do Oponente <span id="machine-score">0</span></p>
-
+        <p class="machine-score">Pontuação do Oponente: <span id="machine-score">0</span></p>
     </main>
-    <script src="./script.js"></script>
-
+    <script src="script.js"></script>
 </body>
 
 </html>

@@ -1,46 +1,59 @@
-const result = document.querySelector('.result')
-const humanScore = document.querySelector('#human-score')
-const machineScore = document.querySelector('#machine-score')
+const resultDisplay = document.querySelector('.result');
+const humanScoreDisplay = document.querySelector('#human-score');
+const machineScoreDisplay = document.querySelector('#machine-score');
+const humanAnimation = document.getElementById('human-animation');
+const machineAnimation = document.getElementById('machine-animation');
 
-let humanScoreNumber = 0
-let machineScoreNumber = 0
+let humanScoreNumber = 0;
+let machineScoreNumber = 0;
 
 const GAME_OPTIONS = {
     ROCK: "rock",
     PAPER: "paper",
-    SCISSOR: "scsissor"
-}
-
+    SCISSOR: "scissor"
+};
 
 const playHuman = (humanChoice) => {
-
-    playTheGame(humanChoice, playMachine())
-}
+    const machineChoice = playMachine();
+    displayChoices(humanChoice, machineChoice);
+    playTheGame(humanChoice, machineChoice);
+};
 
 const playMachine = () => {
-    const choices = [GAME_OPTIONS.ROCK, GAME_OPTIONS.PAPER, GAME_OPTIONS.SCISSOR]
-    const randomNumber = Math.floor(Math.random() * 3)
+    const choices = [GAME_OPTIONS.ROCK, GAME_OPTIONS.PAPER, GAME_OPTIONS.SCISSOR];
+    const randomNumber = Math.floor(Math.random() * choices.length);
+    return choices[randomNumber];
+};
 
-    return choices[randomNumber]
-}
+const displayChoices = (human, machine) => {
+    humanAnimation.textContent = human === GAME_OPTIONS.ROCK ? '✊' : human === GAME_OPTIONS.PAPER ? '✋' : '✌️';
+    humanAnimation.style.opacity = 1;
 
-const playTheGame = (human, machine) => {
+    machineAnimation.textContent = machine === GAME_OPTIONS.ROCK ? '✊' : machine === GAME_OPTIONS.PAPER ? '✋' : '✌️';
+    machineAnimation.style.opacity = 1;
 
-    console.log('Humano:' + human + ' Máquina:' + machine)
+    setTimeout(() => {
+        humanAnimation.style.opacity = 0;
+        machineAnimation.style.opacity = 0;
+    }, 5000);
+};
 
-    if (human === machine) {
-        result.innerHTML = "Deu empate!"
+const playTheGame = (humanChoice, machineChoice) => {
+    if (humanChoice === machineChoice) {
+        resultDisplay.textContent = "Empate!";
     } else if (
-        (human === GAME_OPTIONS.PAPER && machine === GAME_OPTIONS.ROCK) ||
-        (human === GAME_OPTIONS.ROCK && machine === GAME_OPTIONS.SCISSOR) ||
-        (human === GAME_OPTIONS.SCISSOR && machine === GAME_OPTIONS.PAPER)
+        (humanChoice === GAME_OPTIONS.ROCK && machineChoice === GAME_OPTIONS.SCISSOR) ||
+        (humanChoice === GAME_OPTIONS.PAPER && machineChoice === GAME_OPTIONS.ROCK) ||
+        (humanChoice === GAME_OPTIONS.SCISSOR && machineChoice === GAME_OPTIONS.PAPER)
     ) {
-        humanScoreNumber++
-        humanScore.innerHTML = humanScoreNumber
-        result.innerHTML = "Você ganhou"
+        resultDisplay.textContent = "Você ganhou!";
+        humanScoreNumber++;
     } else {
-        machineScoreNumber++
-        machineScore.innerHTML = machineScoreNumber
-        result.innerHTML = "Você perdeu para a Alexa!!"
+        resultDisplay.textContent = "Oponente ganhou!";
+        machineScoreNumber++;
     }
-}
+
+    // Atualiza os placares
+    humanScoreDisplay.textContent = humanScoreNumber;
+    machineScoreDisplay.textContent = machineScoreNumber;
+};
