@@ -7,6 +7,7 @@
 
 body {
     background: url(./assets/maxresdefault.jpg);
+    background-size: cover;
     font-family: 'Mochiy Pop One', sans-serif;
     display: flex;
     justify-content: center;

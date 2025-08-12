@@ -35,7 +35,7 @@ const displayChoices = (human, machine) => {
     setTimeout(() => {
         humanAnimation.style.opacity = 0;
         machineAnimation.style.opacity = 0;
-    }, 5000);
+    }, 1500);
 };
 
 const playTheGame = (humanChoice, machineChoice) => {
